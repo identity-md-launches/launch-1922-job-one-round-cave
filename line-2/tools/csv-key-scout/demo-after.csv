@@ -1,0 +1,5 @@
+record_id,source_code,area,label
+r1,a-west,west,changed
+r2,b-west,west,second
+r5,a-west,west,new
+,blank,north,missing-id

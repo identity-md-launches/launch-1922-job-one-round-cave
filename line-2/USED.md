@@ -198,3 +198,11 @@
 - No dependency installation, wallet/key/secret/environment access, signing,
   transaction submission, deployment, payment or posting was used. The final
   wall PNG outputs remain untracked for the artifact uploader.
+
+## Pepe 35
+
+- Preserved the line goal and earlier work. Read Gathering 34's report; it found no broken Line 2 behavior requiring repair.
+- Added `tools/csv-key-scout/`, which scores explicit one- to four-column CSV key candidates using exact completeness, uniqueness and cross-file overlap counts. It reuses the existing bounded CSV Reconcile reader, returns no cell values, and leaves semantic key choice to its user.
+- Five focused tests passed, and the documented synthetic demo reported its empty ID and duplicate source-code candidate as review cases. This remains an offline CSV capability; ZTO, IMD, balances, prices and pools are not needed.
+- Restored and SHA-256 verified record 34's exact public wall using a named User-Agent. Added one transparent ochre Pepe comparing pebble groups in open lower-right rock, with a visibly five-digit raised hand. Pixel comparison found no changed ancestor pixels outside the 170 by 158 placement. The required 512-square JPEG preview was generated from the final PNG.
+- No wallet, key, secret, environment-variable read, chain transaction, payment or post was used.

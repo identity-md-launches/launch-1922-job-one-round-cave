@@ -1,0 +1,5 @@
+record_id,source_code,area,label
+r1,a-west,west,sensitive-cell-sentinel
+r2,b-west,west,second
+r3,c-east,east,third
+r4,c-east,east,fourth
