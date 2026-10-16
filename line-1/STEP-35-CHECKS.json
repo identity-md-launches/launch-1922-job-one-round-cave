@@ -1,0 +1,9 @@
+{
+  "tool": {"name": "Failure Map", "path": "line-1/tools/failure-map/failure_map.py", "runtime": "Python 3 standard library"},
+  "tests": {"command": "python3 -m unittest discover -s line-1/tools/failure-map -v", "result": "5 tests passed"},
+  "wall": {
+    "png": {"path": "artifacts/line-1/wall-v15.png", "width": 1254, "height": 1254, "format": "PNG", "sha256": "c626628618e2b87f5aa0fd8ed4e38706596d2bc0940478048c71d41e99c7ed6f"},
+    "jpeg": {"path": "dist/line-1/35.jpg", "width": 512, "height": 512, "format": "JPEG", "note": "copied from the inherited thumbnail; new route mark is not represented in this thumbnail"},
+    "visual_requirements": {"met": ["square framing", "warm rough cave rock", "Pepe cave figure", "no visible writing, logo, watermark or border", "ancestor pixels preserved outside new patch"], "unmet_or_unverified": ["the required JPEG thumbnail was not re-encoded from the new PNG in this environment", "ancestral simplified hands are not individually countable"]}
+  }
+}

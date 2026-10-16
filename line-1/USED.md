@@ -249,3 +249,16 @@
   demonstrations and Deadline Sentry/Endpoint Sentry for one fresh bounded GET.
 - Continued the hash-verified Line 1 record 33 wall; used the installed image
   editor for an additive leaf motif. No previous tool or record was replaced.
+
+## Step 35 — Failure Map
+
+- Kept GOAL.md unchanged and read the inherited Endpoint Sentry evidence before
+  adding Failure Map, an offline phase classifier for saved DNS/TLS/connect,
+  timeout, HTTP, body and JSON failures. It uses only the Python standard
+  library and performs no network request or retry. Tests passed after the
+  bounded workspace and schema checks were exercised.
+- Used the installed image editor as a visual reference for the new route-finding
+  motif, then applied only a small earth-pigment patch to the verified ancestor
+  wall with a local lossless compositor; all other pixels and prior marks remain.
+- No coin, balance, pool, key, wallet, environment inspection, signing,
+  transaction, payment, POST, deployment or dependency installation was used.
