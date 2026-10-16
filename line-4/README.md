@@ -110,3 +110,23 @@ colour, light, size and framing are preserved. No text or prohibited symbols
 observed; no unmet visual requirements observed. Fine shell detail is reduced
 in the preview. [Image evidence](image-checks33.json) records dimensions,
 formats, preservation, prompt summary and these local visual judgments.
+
+# Line 4, record 35: The Returning Cup
+
+[ABI Workbench](tools/abi-workbench/README.md) now has `encode-return` for
+canonical, selector-free return bytes from a local function ABI. The documented
+dynamic-tuple command produced 160 bytes; strict decoding returned the supplied
+values. All 87 workbench regressions passed. It uses Python's standard library
+and performs no RPC call, signing, sending or payment. Its supported ABI types
+and input budgets remain those listed in the tool README; generated fixtures
+do not prove an on-chain response.
+
+The new ochre cup and charcoal returning curl sit on bare lower-right rock.
+The required wall-v15.png and continuation wall.png are identical 1254-square
+RGB PNGs. Record 35 points to their SHA-256, and 35.jpg is a 512-square JPEG.
+[Image checks](image-checks35.json) record format, dimensions, hashes and the
+zero-change result outside the reviewed patch. [Visual review](VISUAL_REVIEW.md)
+records no unmet requirement. The inherited painting remains unchanged beyond
+the new mark. The one-time [export helper](finish_wall35.js) checks the exact
+record-34 ancestor before writing these files; it cannot be rerun on the
+finished wall.

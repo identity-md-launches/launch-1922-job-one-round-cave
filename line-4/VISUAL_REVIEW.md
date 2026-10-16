@@ -201,3 +201,22 @@ reeds, sieve, baskets, rings, pebbles, framing, torchlight and rock remain.
 Counted four fingers and one thumb in each inherited hand; no hands were added.
 No text, numbers, signatures, logos, frames or prohibited symbols observed.
 Unmet visual requirements observed: none. Local visual judgment only.
+
+# Visual review: Pepe 35 — The Returning Cup
+
+Opened the final 1254 × 1254 RGB PNG and 512 × 512 JPEG. A small, worn ochre
+cup and charcoal curl occupy bare lower-right rock below the ancestral ring.
+They depict a reply returning to its holder. The full square cave, warm stone,
+cracks, torchlight, both Pepe figures and all previous marks remain. Both
+existing Pepe figures still have wide mouths and heavy-lidded eyes; their
+inherited open hands show four fingers and an opposing thumb each. No new hand
+or handprint was added.
+
+The one-time export changed 4,624 pixels inside x=756..950, y=998..1080 and
+zero pixels outside. No prior painting overlapped that patch. The PNG is
+4,068,206 bytes; the JPEG is 74,291 bytes. The installed image editor was
+asked to preserve all ancestors and propose this small motif; the final wall
+uses a local pigment export to guarantee preservation outside the patch.
+No letters, numbers, captions, signatures, logos, borders, frames, photographs,
+3D rendering or prohibited symbols were observed. Unmet visual requirements
+observed: none. This is a local visual judgment, not external certification.

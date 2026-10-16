@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small offline Ethereum ABI function calldata encoder and return decoder."""
+"""Small offline Ethereum ABI calldata/return encoder and decoder."""
 import argparse
 import json
 import re
@@ -66,9 +66,9 @@ def parse_data(text, *, call=False):
         raise ValueError("--data must be even-length 0x hex")
     return bytes.fromhex(text[2:])
 
-def parse_args(text):
+def parse_args(text, label='--args'):
     if len(text) > MAX_ARGS_BYTES or len(text.encode("utf-8")) > MAX_ARGS_BYTES:
-        raise ValueError("--args exceeds the 1 MiB UTF-8 input limit")
+        raise ValueError(f"{label} exceeds the 1 MiB UTF-8 input limit")
     # Bound nesting independently of the interpreter's recursion setting.
     depth, quoted, escaped = 0, False, False
     for char in text:
@@ -86,7 +86,7 @@ def parse_args(text):
     except RecursionError as e:
         raise ValueError("argument JSON nesting is too deep") from e
     if not isinstance(values, list):
-        raise ValueError("--args must be a JSON array")
+        raise ValueError(f"{label} must be a JSON array")
     return values
 
 MASK = (1 << 64) - 1
@@ -494,12 +494,15 @@ def main():
     ap.add_argument('--demo',action='store_true',help='encode a built-in offline transfer example')
     sub=ap.add_subparsers(dest='command')
     enc=sub.add_parser('encode'); enc.add_argument('--abi',required=True); enc.add_argument('--function',required=True); enc.add_argument('--args',required=True,help='JSON array of arguments')
+    ret=sub.add_parser('encode-return', help='make canonical function return bytes offline')
+    ret.add_argument('--abi',required=True); ret.add_argument('--function',required=True)
+    ret.add_argument('--values',required=True,help='JSON array of output values')
     dec=sub.add_parser('decode'); dec.add_argument('--abi',required=True); dec.add_argument('--function',required=True); dec.add_argument('--data',required=True,help='0x-prefixed return bytes')
     dec.add_argument('--strict', action='store_true', help='require canonical return bytes: no gaps, shared/reordered tails or surplus words')
     call=sub.add_parser('decode-call', help='inspect canonical calldata offline')
     call.add_argument('--abi',required=True); call.add_argument('--function',required=True)
     call.add_argument('--data',required=True,help='0x-prefixed calldata with selector')
-    for parser in (enc, dec, call):
+    for parser in (enc, ret, dec, call):
         parser.epilog = '--function accepts a unique name or an explicit signature, e.g. transfer(address,uint256). Quote signatures in a shell.'
     a=ap.parse_args()
     try:
@@ -510,6 +513,11 @@ def main():
             selector=keccak256(sig.encode())[:4]
             payload=encode_tuple(fn.get('inputs',[]),vals)
             print(json.dumps({'signature':sig,'selector':'0x'+selector.hex(),'calldata':'0x'+(selector+payload).hex()},indent=2)); return 0
+        if a.command=='encode-return':
+            vals=parse_args(a.values, '--values')
+            fn,sig=load_function(a.abi,a.function)
+            payload=encode_tuple(fn.get('outputs',[]), vals)
+            print(json.dumps({'signature':sig,'return_data':'0x'+payload.hex()},indent=2)); return 0
         if a.command=='decode':
             fn,sig=load_function(a.abi,a.function)
             data=parse_data(a.data, call=a.command=='decode-call')

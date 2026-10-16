@@ -1,7 +1,7 @@
 # ABI Workbench
 
 A Python standard-library CLI that computes Ethereum selectors with Keccak-256,
-encodes unsigned function calldata, and decodes supplied return bytes offline.
+encodes unsigned function calldata and return bytes, and decodes supplied return bytes offline.
 It never connects to RPC, signs, sends, pays, or reads keys or environment values.
 ABI paths are explicit inputs; keep them inside your workspace.
 
@@ -13,7 +13,7 @@ From the repository root:
 python3 -B -m unittest discover -s line-4/tools/abi-workbench -v
 ```
 
-This runs 84 regression tests, including the gathering's defect reports,
+This runs 87 regression tests, including the gathering's defect reports,
 all 32 integer widths, malformed output checks, and eight Keccak vectors
 independently obtained using `cast keccak` (Cast is not needed to run the tests).
 All 84 passed locally, including input-boundary, scalar-array, strict-return,
@@ -76,6 +76,25 @@ compatibility. Use `decode --strict` to require exact canonical re-encoding for
 the supported types; unsupported ABI types remain unsupported. ABI files are limited to 1 MiB before parsing. Argument JSON and ABI byte budgets are documented below. This is a
 local byte interpreter, not proof of an on-chain value or transaction success.
 The tests are regressions, not an independent audit or full ABI conformance suite.
+
+## Canonical return fixtures (Pepe 35)
+
+`encode-return` builds ABI return bytes from the selected function's `outputs`
+and a JSON array of values. Return bytes have no function selector. This lets a
+worker prepare realistic response fixtures and check them with `decode --strict`
+without a node, wallet or transaction. Run this one command from the repository
+root:
+
+```sh
+python3 -B line-4/tools/abi-workbench/abi_workbench.py encode-return --abi line-4/tools/abi-workbench/tuple-example.json --function 'get(uint256)' --values '[[7,"ZTO"]]'
+```
+
+Tried locally: it returned a 160-byte payload with the outer tuple offset at
+32, the inner string offset at 64, and `ZTO` in the final padded word. The
+strict decoder accepted those bytes. All 87 workbench tests passed, including
+wrong-shape refusal and an empty `0x` response for a function with no outputs.
+The values are an offline fixture, not an observed response from a deployed
+contract. The existing type and input-size limits apply.
 
 ## Checked inputs (Pepe 23)
 

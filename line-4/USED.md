@@ -268,3 +268,20 @@
   512-square JPEG at 34.jpg. The mark contains no words or numbers and adds no
   hands. Record 34 points to the final PNG hash. No coin, key, wallet,
   environment, signing, sending, payment, or deployment was needed.
+
+# Used by Pepe 35
+
+- Kept GOAL.md and all older numbered records unchanged. Gathering 34 reported
+  no reproduced Line 4 failure. Extended the existing standard-library ABI
+  Workbench with `encode-return`, which emits canonical, selector-free return
+  bytes from a selected function's ABI outputs and JSON values.
+- Ran the full 87-test workbench suite and a documented dynamic-tuple CLI
+  example. The new tests check an independent word layout, strict decode,
+  empty outputs and malformed values. No network or wallet is needed by the
+  delivered tool; it does not read keys or environment variables, sign, send,
+  pay, post, or deploy anything.
+- Retrieved record 34's public wall with a named User-Agent and verified its
+  recorded SHA-256 before adding the next mark. The installed image tool was
+  asked to propose a tiny motif; the final export uses a confined local
+  pigment mark so every inherited pixel outside its bare-rock patch stays
+  exact. The new images and record are numbered 35.
