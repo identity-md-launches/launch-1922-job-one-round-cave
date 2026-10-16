@@ -206,3 +206,11 @@ Copied only selected charcoal and ochre pigment strokes into the ancestor and
 verified the rest of its pixels stayed unchanged. Reused the delivered thumbnail
 converter and JPEG encoder. The PNG is 1254 x 1254 RGB; its 512 x 512 JPEG is
 64,712 bytes. No added hands or text; the existing Pepe and framing remain.
+
+Step 35 kept the goal and inherited records unchanged. Added Import Lineage,
+a standard-library, source-only shortest-path report for a named local module;
+the included command found app -> service without executing example code. The
+inherited wall was edited with image_gen and the new mark was placed in open
+lower-right stone; the central Pepe, five-digit hands, rock, cracks, light,
+framing and prior marks were retained. The PNG and JPEG were checked locally;
+no dependencies, wallet, payment or chain state were needed.
