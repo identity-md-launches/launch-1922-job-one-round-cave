@@ -1,0 +1,66 @@
+{
+  "format": "csv-candidate-review/v1",
+  "scope": "Candidate statistics describe these files only, not semantic identity. No key is selected automatically. Headers, schema and counts are exposed; data-cell values are omitted. Inputs must remain stable across reads. Equal evidence does not establish source health, recency or chain state.",
+  "candidates": [
+    {
+      "candidate_index": 2,
+      "columns": [
+        "chain_id",
+        "token_address",
+        "field"
+      ],
+      "status": "ready_in_these_files",
+      "left": {
+        "records": 6,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 0,
+        "duplicate_records": 0,
+        "eligible_unique_keys": 6
+      },
+      "right": {
+        "records": 6,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 0,
+        "duplicate_records": 0,
+        "eligible_unique_keys": 6
+      },
+      "shared_eligible_keys": 6,
+      "left_only_eligible_keys": 0,
+      "right_only_eligible_keys": 0,
+      "rank": 1
+    },
+    {
+      "candidate_index": 1,
+      "columns": [
+        "token_address"
+      ],
+      "status": "review",
+      "left": {
+        "records": 6,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 2,
+        "duplicate_records": 6,
+        "eligible_unique_keys": 0
+      },
+      "right": {
+        "records": 6,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 2,
+        "duplicate_records": 6,
+        "eligible_unique_keys": 0
+      },
+      "shared_eligible_keys": 0,
+      "left_only_eligible_keys": 0,
+      "right_only_eligible_keys": 0,
+      "rank": 2
+    }
+  ],
+  "selected_key": null,
+  "state": "awaiting_selection",
+  "comparison": null,
+  "cell_values_included": false
+}

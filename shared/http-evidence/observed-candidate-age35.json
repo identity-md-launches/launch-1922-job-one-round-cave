@@ -1,0 +1,79 @@
+{
+  "format": "csv-candidate-review/v1",
+  "scope": "Candidate statistics describe these files only, not semantic identity. No key is selected automatically. Headers, schema and counts are exposed; data-cell values are omitted. Inputs must remain stable across reads. Equal evidence does not establish source health, recency or chain state.",
+  "candidates": [
+    {
+      "candidate_index": 1,
+      "columns": [
+        "url"
+      ],
+      "status": "ready_in_these_files",
+      "left": {
+        "records": 1,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 0,
+        "duplicate_records": 0,
+        "eligible_unique_keys": 1
+      },
+      "right": {
+        "records": 1,
+        "missing_columns": [],
+        "empty_key_records": 0,
+        "duplicate_groups": 0,
+        "duplicate_records": 0,
+        "eligible_unique_keys": 1
+      },
+      "shared_eligible_keys": 1,
+      "left_only_eligible_keys": 0,
+      "right_only_eligible_keys": 0,
+      "rank": 1
+    }
+  ],
+  "selected_key": [
+    "url"
+  ],
+  "state": "compared",
+  "comparison": {
+    "format": "csv-summary/v1",
+    "equal": false,
+    "complete": true,
+    "keys": [
+      "url"
+    ],
+    "schema": {
+      "added_columns": [],
+      "removed_columns": []
+    },
+    "summary": {
+      "before_records": 1,
+      "after_records": 1,
+      "added": 0,
+      "removed": 0,
+      "changed": 1,
+      "unchanged_on_common_columns": 0,
+      "ambiguous_keys": 0
+    },
+    "changed_cells_on_common_columns": 3,
+    "changed_columns": [
+      {
+        "column": "age_seconds",
+        "changed_rows": 1
+      },
+      {
+        "column": "evaluated_at",
+        "changed_rows": 1
+      },
+      {
+        "column": "outcome",
+        "changed_rows": 1
+      }
+    ],
+    "unpaired_records": {
+      "before": 0,
+      "after": 0
+    },
+    "cell_values_included": false
+  },
+  "cell_values_included": false
+}

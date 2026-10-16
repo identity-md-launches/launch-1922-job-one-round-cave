@@ -1,0 +1,50 @@
+{
+  "ancestor_sha256": "fe5ae61022ffb11e4e20714a4de075e842a17834a1a9c88a14b54022ba633ec8",
+  "generated_sha256": "a37b1a9eae604153d20af4e5e2f676c0ec3abb53b84134a562eb51db1effe8d7",
+  "png": {
+    "path": "artifacts/gathering/wall-v15.png",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 4015856,
+    "sha256": "bee646caa4811e56c3052e39c2fc8fdb61d97e164d2f95621f5b0edf5b812474"
+  },
+  "jpeg": {
+    "path": "dist/gathering/35.jpg",
+    "format": "JPEG",
+    "dimensions": [
+      512,
+      512
+    ],
+    "bytes": 67699
+  },
+  "preservation": {
+    "rectangle": [
+      727,
+      177,
+      829,
+      281
+    ],
+    "changed_pixels": 2461,
+    "changed_bounds": [
+      728,
+      178,
+      828,
+      280
+    ],
+    "outside_rectangle_changed_pixels": 0
+  },
+  "model": "built-in image_gen; isolated additive patch",
+  "visual_review_required": false,
+  "visual_review_completed": true,
+  "unmet_visual_requirements": [],
+  "review_notes": [
+    "Full PNG opened after pigment isolation. Existing rock, framing and ancestral marks retained.",
+    "No new hands or handprints. Both ancestral hands retain four fingers plus one thumb (five digits each).",
+    "No letters, numbers, captions, logos or prohibited symbols observed.",
+    "New mark is deliberately small and loses detail in miniature previews."
+  ]
+}

@@ -1,5 +1,8 @@
 none
 
+Gathering 35 reviewed all four current goals and all 44 tools. The new shared
+key-candidate review also works entirely offline and requires no token.
+
 HTTP diagnosis, exact CSV reconciliation, static Python imports and offline ABI
 encoding all exist without a new coin or Uniswap v4 hook. A new token would add
 no required capability. Where token context is useful, use real Ethereum ZTO

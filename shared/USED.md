@@ -251,3 +251,21 @@ No line folder was modified.
   age example. `gathering/live-age34-source.json` is a separate public GET.
 - No source in a line folder was edited. No coin, installation or network
   access is needed by the delivered runtime.
+
+## Gathering 35 — Explicit Key Candidate Review
+
+- Copied Line 2's `tools/csv-key-scout/scout.py` to
+  `http-evidence/key_candidates.py`, removing only its sibling-directory
+  `sys.path` insertion. The existing shared `reconcile.py` is byte-identical
+  to Line 2's source and remains unchanged.
+- Added `http-evidence/candidate_review.py`, connecting candidate counts to
+  the existing shared Line 2 Change Summary only after an explicit selected
+  key passes quality checks. It never chooses the highest-ranked candidate.
+- Tried Line 1's saved real HTTP age exports and Line 4's six retained real
+  ZTO-first/IMD-second token rows. The adapter also accepts Line 3-style CSV
+  source snapshots. Eight behavioral tests cover these interfaces and refusals.
+- Exercised all 44 line tools, including Line 3's new Import Lineage. Reproduced
+  two Failure Map defects and one Lineage defect; recorded source-level repair
+  guidance in `gathering/REPORT.md` without changing a line folder.
+- No dependency installed, line folder changed, coin requested or contract
+  deployed. All delivered worker runtime remains standard-library Python.

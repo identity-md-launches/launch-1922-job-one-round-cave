@@ -236,3 +236,60 @@ Snapshots and CSVs are unauthenticated claims; only selected producer fields
 are validated. Column names/counts/schema remain visible: omitted cells are
 not a privacy guarantee. Use stable files during comparison. Source code,
 not a CSV verdict, is authoritative for the tool's documented limits.
+
+## Gathering 35: Explicit Key Candidate Review
+
+`candidate_review.py` connects Line 2's new Key Scout to its existing compact
+Change Summary. Workers using Line 1's HTTP exports, Line 3's import snapshots,
+or Line 4's token CSV can inspect candidate keys before choosing one. Python
+3.10+, standard library only; keep this folder together. No installation,
+network, environment lookup, clock read or file write occurs in this tool.
+
+One command from the repository root:
+
+```sh
+python3 -B shared/http-evidence/candidate_review.py shared/token-read-plan/observed.csv shared/token-read-plan/observed.csv --candidate '["token_address"]' --candidate '["chain_id","token_address","field"]' --key chain_id --key token_address --key field
+```
+
+Tried: exit **0**, six historical real ZTO-first/IMD-second rows compare equal.
+The composite candidate has six shared eligible keys; `token_address` alone
+has two duplicate groups on each side. No balances, addresses or other data
+cells appear in the output. These are retained observations, not current chain
+state. `observed-candidates35.json` retains the preflight with **no selection**.
+
+Omit `--key` to inspect candidate statistics only: `awaiting_selection`, exit 0,
+`selected_key=null`, `comparison=null`. A top-ranked key is never chosen for
+you. To compare, repeat `--key` for the exact columns of one supplied candidate
+set. A missing, empty, duplicate or header-only selected key produces
+`blocked_key_quality`, exit **1**, with no comparison. A ready selected key
+produces `compared`: exit 0 for equality, 1 for any difference. Malformed CSV,
+invalid candidates, an unlisted key or an outside-workspace path returns **2**,
+with a generic error on stderr and no partial stdout. Exit 0 from preflight
+means statistics were computed, not that a key is safe or the data is equal.
+
+For the Line 1 age handoff:
+
+```sh
+python3 -B shared/http-evidence/candidate_review.py shared/http-evidence/observed-age-recent34.csv shared/http-evidence/observed-age-stale34.csv --candidate '["url"]' --key url
+```
+
+Tried: exit **1**, one row changes in `age_seconds`, `evaluated_at`, `outcome`;
+`observed-candidate-age35.json` retains the complete value-free result. These
+are two evaluations of one saved real public GET, not two live requests.
+Eight new behavioral tests pass:
+
+```sh
+python3 -B -m unittest discover -s shared/http-evidence -p test_candidate_review.py -v
+```
+
+`key_candidates.py` copies Line 2's scout with only the sibling import-path
+insertion removed; it uses this folder's existing bounded CSV reader.
+Candidates are explicit (1–20 sets, 1–4 columns each). Each CSV is at most
+16 MiB / 100,000 rows. The full tables and detailed difference are held in
+memory; candidate count limits do not imply a small peak memory footprint.
+The adapter rereads inputs for the summary and a final selected-key quality
+check. Keep files stable: those checks are not a lock or an atomic snapshot.
+Uniqueness in these exports does not prove semantic identity. Headers, schema,
+counts and chosen column names remain visible; this is not anonymization.
+Equal stale snapshots can still be equal. Key choice changes the comparison's
+meaning and must come from the source system's identity contract.

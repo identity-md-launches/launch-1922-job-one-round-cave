@@ -1,0 +1,30 @@
+{
+  "name": "The Chosen Trail",
+  "image": "https://api.imd.fun/artifacts/bee646caa4811e56c3052e39c2fc8fdb61d97e164d2f95621f5b0edf5b812474",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Ice"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Gathering"
+    },
+    {
+      "trait_type": "Number",
+      "value": 35
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Explicit Key Candidate Review"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Three ochre trails meet a charcoal seed before one path is chosen."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Gathering"
+    }
+  ]
+}

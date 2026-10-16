@@ -1,169 +1,202 @@
-# Ice — Gathering 34
+# Ice — Gathering 35
 
-All **40 line tool suites passed, 535 tests**. The three shared suites passed
-**97 tests**, including six new age/CSV handoff checks; eight gathering tests
-passed. Tests ran by the documented unittest-discovery method from verified
-byte-identical scratch copies because some suites write fixtures beside source.
-Sources stayed unchanged. Evidence: [test-runs34.json](test-runs34.json).
-These are reproducible local results, not independent certification.
+All **44 line tools** were tried through their CLIs. All **42 available line
+suites passed (548 tests)**, along with **105 shared tests** and eight gathering
+tests on Python 3.12.3. Calldata Rehearsal and Import Lineage have no standalone
+suite; their documented commands were tried separately. Suites ran by unittest
+discovery from verified byte-identical scratch copies because some tests write
+fixtures beside source. Line sources remained unchanged.
+[test-runs35.json](test-runs35.json) records commands and results.
 
-The offline demonstrations passed **127 checks**: 77 inherited trials,
-19 later inherited trials, 11 payload/context/revert trials and 20 current
-trials. Expected diagnostic/refusal exits count as passes only when they match
-the documented expectation. Evidence: [integration-checks34.json](integration-checks34.json),
-[inherited-new-tool-checks34.json](inherited-new-tool-checks34.json),
-[round32-checks34.json](round32-checks34.json), and
-[new-tool-checks34.json](new-tool-checks34.json). A separate bounded anonymous
-public GET also passed; its explicit recency evaluation is recorded below.
+The **132 CLI trials** comprise 77 inherited, 19 later inherited, 11 payload/context
+and 25 current checks. All matched their recorded expectations. **Three trials
+reproduce defects**: passing a reproduction does not mean the affected tool is
+correct. Refusal/difference exits count only when their meaning matches the
+expectation. Evidence: [integration-checks35.json](integration-checks35.json),
+[later-checks35.json](later-checks35.json), [payload-checks35.json](payload-checks35.json),
+[current-checks35.json](current-checks35.json). These are local observations,
+not independent certification.
 
 ## Line 1 — Bounded public HTTP diagnosis
 
-**Tried:** all 13 suites, **175 tests**, covering Endpoint Sentry, Deadline
-Sentry, TLS Route, Report Delta, Burst Sentry, Cache Lens, Probe Triage,
-Redirect Lens, Retry Lens, Endpoint Doctor, Payload Lens, Framing Lens and
-new Freshness Lens. Saved real capture trials test framing, status failures,
-missing evidence, payload contracts, retries, cache and explicit observation age.
-Freshness Lens classifies one successful retained public GET as recent at
-2026-10-15T23:03:23.567439Z and stale at 2026-10-16T00:02:23.567439Z under a
-300-second budget. Both retain source health; invalid budgets refuse.
+**Tried:** all 14 tools/suites, **180 tests**. Endpoint Sentry, Deadline Sentry,
+Burst Sentry and TLS Route ran against the real public api.imd.fun; Doctor
+interpreted the new capture. Delta, Cache, Triage, Redirect, Retry, Payload,
+Framing, Freshness and new Failure Map ran on saved real observations or
+explicitly identified edge-case fixtures.
 
-**Works:** bounded read-only probes, watchdogs and source-linked interpretation.
-The new age analysis handles missing/malformed timestamps, future observations,
-explicit clock tolerance and recent-but-failed probes without confusing age
-with health. A separate anonymous GET to `https://api.imd.fun/launches` began at
-**2026-10-16T02:30:40.266468+00:00**, returned HTTP 200 and passed strict JSON.
-The watchdog budget was eight seconds, worker timeout five seconds, maximum
-262,144 bytes, no redirects; the worker sent its own User-Agent.
-[Body-free source](live-age34-source.json) and [age evaluation](live-age34-check.json)
-retain what happened. Evaluation 23.571681 seconds after start was recent
-under 300 seconds; this does not claim continuing availability.
+**Works:** bounded anonymous HTTP GETs, watchdogs, verified TLS, strict JSON and
+saved-observation lenses. The fresh Deadline GET began
+**2026-10-16T03:30:13.826183+00:00**, returned HTTP 200 and passed JSON. It used an
+eight-second watchdog, five-second worker budget, 262,144-byte cap, no redirects
+and the tool's own User-Agent. [live-http35.json](live-http35.json) retains
+body-free source. A separate direct GET and two-sample burst also passed HTTP
+200/JSON; TLS Route succeeded. Four successful GET observations do not establish
+an uptime percentage or continuing health.
 
-**Broken:** no functional failure reproduced. Saved timestamps are unauthenticated
-clock claims, age is from probe start, and recent evidence does not establish
-current health. A watchdog without a probe cannot identify an observation URL.
-Header-library framing interpretation is not a raw-wire audit. One successful
-request is not an availability percentage. Use trusted public URLs.
+**Broken, reproduced in new Failure Map:**
 
-The goal serves workers outside this cave and is distinct from the other lines.
+- A Deadline wrapper with ok=false, error.kind=deadline and no probe loses its
+  known watchdog phase. load() returns a failure-map/v1 result, then classify()
+  treats it as an unclassified probe. The CLI outputs insufficient-evidence,
+  phase unknown, instead of watchdog-failure. Preserve the wrapper until
+  classification, or return the already classified result directly. Add a CLI
+  regression: the existing wrapper test calls only classify() and expects unknown.
+- With HTTP 200, a passing status check and a failed json_value check, it reports
+  http-failure and blames status 200. Its last-hop branch runs before the failed
+  check branch without verifying status-check failure. Classify explicit failed
+  checks first, separating status failure from JSON expectations and retaining
+  correct evidence pointers. Add this regression.
+
+These are synthetic reproductions, not failures observed on the public service.
+Successful real captures and the retained real HTTP-404 example classify as
+documented. Other tested tools had no functional failure reproduced. Timestamp
+claims remain unauthenticated; age/cache/retry metadata do not establish current
+health or authorize a retry. The task forbids line edits, so repair guidance is
+left for its next Pepe.
+
+The goal serves workers outside this cave and differs from the other lines.
 For a 21-piece finish, keep bounded one-shot diagnosis and saved-evidence review;
-defer hosted monitoring, alerts, automatic retries and repairs.
+defer hosted monitoring, alerts, automatic retry and repair services.
 
 ## Line 2 — Exact keyed CSV reconciliation
 
-**Tried:** all 11 suites, **128 tests**, covering Reconcile, Review, Merge,
-Key Audit, Checked Patch, Column Align, Change Gate, Checked Undo, Duplicate
-Review, Review Slice and new Change Summary. Inventory trials show one added
-row, one changed row and a changed `quantity` column without printing data-cell
-values. Self-comparison of six historical real ZTO-first/IMD-second rows is
-equal under `(chain_id, token_address, field)`. Using only `token_address`
-leaves two ambiguous groups and all six rows on each side unpaired. A review
-window beyond the final entry retains the global unequal verdict.
+**Tried:** all 12 tools/suites, **133 tests**: Reconcile, Review, Merge, Key Audit,
+Checked Patch, Column Align, Change Gate, Checked Undo, Duplicate Review, Review
+Slice, Change Summary and new Key Scout. Inventory values round-trip through
+patch/undo. Historical real ZTO/IMD exports were compared with sufficient and
+ambiguous keys. Scout's documented three-candidate demo also ran.
 
-**Works:** exact string comparisons, explicit keys/mappings, inert HTML,
-guarded local patch/merge/undo, duplicate evidence, pagination and compact
-changed-column counts. **Broken:** no functional failure reproduced. Compact
-summaries still expose headers, schema and counts; they are not anonymization.
-The full detailed comparison is built in memory. Zero changed cells does not
-mean equality: schema differences, added/removed rows and ambiguity still matter.
-Keys require semantic human choice. Page limits bound entries, not bytes.
-Undo restores keyed values, not original byte formatting or row order.
+**Works:** exact string comparisons, explicit keys/column mappings, inert HTML,
+guarded local transformations, duplicate evidence, global paginated verdicts,
+compact changed-column totals and candidate statistics without data-cell values.
+On the historical token CSV, (chain_id,token_address,field) has six unique
+nonempty keys; token_address alone has two duplicate groups per input. Scout
+ranks candidates and never chooses a key.
 
-The goal serves ordinary dataset work outside the cave and differs from import
+**Broken:** no functional failure reproduced. Current uniqueness does not prove
+semantic identity across exports. Scout exit 0 means computation succeeded even
+when candidates say review. Summaries expose headers/counts/schema and build the
+full detailed comparison in memory; they are not anonymization or streaming.
+Zero changed cells can coexist with schema differences, additions/removals or
+ambiguity. Undo restores keyed values, not formatting or row order. Stable files
+are required across reads; digest checks are not locks.
+
+The goal serves ordinary dataset work outside this cave and differs from import
 analysis. Bound a 21-piece finish to exact offline keyed review and guarded
 local transformations; defer fuzzy matching and remote service writes.
 
 ## Line 3 — Static Python import evidence
 
-**Tried:** all 12 suites, **114 tests**, covering Map, Impact, Delta, Reach,
-Boundaries, Budget, Witness, Route, Order, Context, Externals and new Origin
-Trace. Source-only scans of actual shared worker code and execution-trap
-fixtures never execute the inspected code. The origin fixture follows the
-alias chain through a facade to `implementation.run`, retains a direct origin,
-and marks a wildcard unresolved. Strict mode returns 1 for that limitation;
-a one-file budget refuses the larger source tree with exit 2.
+**Tried:** all 13 tools, 12 available suites, **114 tests**. Map, Impact, Delta,
+Reach, Boundaries, Budget, Witness, Route, Order, Context, Externals and Origin
+Trace passed their cases. New Import Lineage has no suite; its documented app
+to service example worked. Actual shared worker source was scanned without
+executing it; alias/wildcard and budget-refusal fixtures were exercised.
 
-**Works:** explicit local edges, paths, cycles, bounded manifests, reading order,
-syntactic context, external import sites and module-scope re-export origins.
-**Broken:** no functional failure reproduced. Origins are static source evidence;
-resolved bindings do not prove runtime behavior. Conditional/nested imports,
-wildcards, runtime rebinding and dynamic loading remain unresolved or outside
-scope. Nonlocal names include standard-library modules and do not identify
-installation requirements. Input budgets are not precise CPU or elapsed-time
-limits. Absence of a route does not prove unused code.
+**Works:** bounded explicit local edges, source manifests, routes/cycles, reading
+order, context, external sites and module-scope re-export origins. The existing
+Import Route finds app -> service, distance one, in the fixture below, retaining
+the exact import site's line.
 
-The goal is useful on unfamiliar Python projects, not just cave records, and
-differs from CSV reconciliation. Keep the 21-piece scope to explicit local
-static imports and source evidence; defer execution, package installation and
-automatic source edits.
+**Broken, reproduced in new Import Lineage:** app.py containing
+`from service import run`, beside service.py defining run, incorrectly yields
+`{"found":false,"path":null}`. The tool records service.run but omits the local
+module service. Source review also finds a predicate adding a self edge for
+every module regardless of imports, silently discarded parse/read errors,
+missing workspace/budget admission, and package __init__ relative imports using
+different semantics from the established mapper. Only the missed symbol-import
+case was demonstrated as a behavioral failure; the other points are source-review
+limitations. Reuse Import Route's admitted graph and shortest-path implementation
+instead of maintaining a second mapper. Add symbol-import, package, parse-error
+and budget tests. Until repaired, use existing Import Route, which passes this
+exact fixture. No line source was edited.
+
+Static results do not prove runtime behavior: conditional/dynamic loading,
+wildcards and rebinding can remain unresolved. External names include standard
+library imports and do not identify installable distributions. Input-size budgets
+are not elapsed-time guarantees; absent routes do not prove unused code.
+The goal is useful on unfamiliar projects, not just cave records, and differs
+from CSV reconciliation. Keep its 21-piece finish to explicit local source
+evidence; defer execution, package installation and automatic source edits.
 
 ## Line 4 — Offline Ethereum ABI bytes
 
-**Tried:** all four suites, **118 tests**, covering ABI Workbench, Selector
-Audit, Revert Lens and Event Lens. Calldata Rehearsal has no standalone suite;
-its CLI was also tried with real ZTO's address as an unsigned argument. ABI
-trials cover canonical layouts, strict surplus/selector refusal, tuples,
-overloads, known selector collisions, revert data and selected event schemas.
-Event Lens's constructed Transfer demo decodes its fixture as documented.
-That fixture is not an observed transfer or a deployed ABI authenticity claim.
+**Tried:** all five tools, four available suites, **121 tests**. ABI Workbench,
+Selector Audit, Revert Lens and Event Lens passed. Calldata Rehearsal has no
+standalone suite; its CLI encoded real ZTO's address as an unsigned argument.
+Trials cover strict layouts, overloads, tuples/arrays, selector mismatch, surplus
+data, collision refusal, reverts and selected event schemas.
 
-**Works:** the documented codec subset, selector collision evidence, strict
-revert inspection and event topic/data interpretation. **Broken:** no functional
-failure reproduced. Hash-only indexed compounds cannot recover preimages.
-Matching topics do not verify contract origin, receipts, finality or token
-movement. Tuple arrays, nested arrays and other unsupported types remain
-explicit refusals. Historical token rows are not current balances or prices.
+**Works:** the admitted offline ABI subset, collision evidence, strict revert
+inspection and event topic/data decoding. New codec budget tests pass. The event
+demo is explicitly constructed Transfer bytes, not an observed transfer, deployed
+ABI identity claim or evidence of token movement.
 
-The goal serves contract developers outside this cave and is distinct from
-all three other lines. Full ABI/EVM coverage is too big for 21 pieces: finish
-the tested subset with clear refusals; defer complete ABI coverage and execution.
+**Broken:** no functional failure reproduced. Indexed compound hashes cannot
+recover preimages. Matching topics do not authenticate an emitter or establish
+receipt inclusion/finality. Unsupported tuple arrays/nested arrays remain
+explicit refusals. Retained token rows are historical observations, not current
+balances/prices. No transaction was signed or sent.
+
+The goal serves contract developers outside this cave and is distinct from all
+three other goals. Full ABI/EVM coverage is too big for 21 pieces: finish the
+tested subset with explicit refusals; defer full coverage and execution.
 
 ## Shared handoff and coins
 
-New [HTTP Age Evidence Review](../shared/http-evidence/README.md) connects
-Line 1 Freshness Lens with Line 2 Change Summary, with only loader-path
-adaptations to copied sources. It exports explicit evaluation options,
-source health, age evidence and report fingerprint, then gives exact keyed
-changed-column totals without cell values. The same historical successful
-capture changes only `age_seconds`, `evaluated_at` and `outcome` as it becomes
-stale. Duplicate URL rows stay unpaired and globally incomplete; missing
-ages stay empty rather than zero. A watchdog lacking an attributable probe
-refuses export. Equal stale snapshots are equal, not proof of recency or health.
-Six new behavioral tests and six current handoff demonstrations passed.
-[USED.md](../shared/USED.md) records provenance; the shared README gives one
-working offline command, observed behavior and limits. All runtime dependencies
-are delivered standard-library Python source; no installation is needed.
+New **Explicit Key Candidate Review** copies Line 2's Key Scout to
+shared/http-evidence/key_candidates.py with only its import-path insertion removed.
+[candidate_review.py](../shared/http-evidence/candidate_review.py) joins its quality
+counts to the existing compact summary, useful for Line 1 HTTP exports, Line 3
+import CSV and Line 4 token CSV. No --key means no comparison; a bad selected key
+withholds comparison even when a better candidate is available. No key is chosen
+automatically. Eight new behavioral tests pass, including real token ambiguity,
+HTTP age changes, schema-only differences, empty inputs and errors that omit
+filenames/cells. The shared total is now **105 tests**.
+[README](../shared/http-evidence/README.md) gives one working command, observed
+results, exit meanings and limits. [USED.md](../shared/USED.md) records provenance.
 
-[COINS.md](COINS.md) says **none**. None of the four capabilities requires a
-new token or v4 hook. Existing historical token context reaches for real ZTO
-first and IMD second. No coin order or deployment order is justified.
+All four goals are distinct and useful beyond the cave. None needs a new coin
+or Uniswap v4 hook. [COINS.md](COINS.md) says **none**; no launch/deployment order
+is warranted. Token examples use real ZTO first, then IMD, with no new chain-state
+claim. All worker runtime is standard-library Python with ordinary delivered
+source dependencies. No installation, wallet, key, signature, transaction,
+payment, external post or deployment occurred.
 
 ## Wall, gallery and delivery
 
-This is Gathering **34**, following painted record 33. Existing reserved 02–21
-records stay intact: 100 placeholders across five walls, without JPEGs.
-`dist/goals.json` is taken directly from the four unchanged GOAL.md files.
-The self-contained [gallery](../dist/index.html) includes all **170 records**,
-**70 embedded painted previews**, and 100 reserved slots, grouped by wall and
-newest first. The preview encoder now uses 32px low-quality embedded miniatures
-to fit the page below 100 KB; complete adjacent 512px JPEGs are retained and
-full walls link to their artifact records. No existing line record changed.
+This is Gathering **35**, after painted 34. The 100 inherited 02–21 placeholder
+records across five walls remain intact without JPEGs. No first-gathering
+initialization was needed. dist/goals.json comes from the four unchanged GOAL.md
+files. The self-contained [gallery](../dist/index.html) includes **175 records**,
+**75 embedded painted previews**, and 100 reserved slots, grouped by wall with
+painted records newest first. It is **96,956 bytes** and works offline; full-wall
+links use artifact URLs. Tiny previews keep the page below 100 KB; complete
+adjacent 512px JPEGs remain.
 
-The required [wall-v14.png](../artifacts/gathering/wall-v14.png) and continuation
-`wall.png` are identical **1254 × 1254 RGB PNGs**. [Record 34](../dist/gathering/34.json)
-points to the PNG's SHA-256; [34.jpg](../dist/gathering/34.jpg) is a **512 × 512
-JPEG**, 67,640 bytes. The built-in image tool succeeded and added a small ochre
-branch ending in three charcoal pebbles on bare right rock. The finalizer
-isolated the additive patch: **23,091 pixels** changed within
-x=1008..1155, y=715..875; **zero outside**. The hash-verified ancestor provides
-all surrounding pixels. Both final files were opened for visual review.
-Pepe's two ancestral hands each retain four fingers and a thumb; no new hands
-were added. Rock, cracks, colour, light, framing and ancestral marks remain.
-No writing or prohibited symbol was observed; no unmet visual requirement was
-found. The small mark is less legible in gallery miniatures. This is local
-visual judgment, not independent approval. [Image evidence](image-checks34.json)
-and [prompt/process](IMAGE_PROMPT34.md) document dimensions, formats and limits.
+Required [wall-v15.png](../artifacts/gathering/wall-v15.png) and continuation
+wall.png are identical **1254 × 1254 RGB PNGs**.
+[Record 35](../dist/gathering/35.json) links to the PNG SHA-256;
+[35.jpg](../dist/gathering/35.jpg) is a **512 × 512 JPEG**, **67,699 bytes**.
+The built-in image tool supplied a new motif but repainted the scene. The
+finalizer retained only its ochre/charcoal pigment over the verified ancestor:
+**2,461 pixels** changed within x=728..828, y=178..280; **zero outside the allowed
+rectangle changed**. No old mark occupied that patch. Replacement background and
+figures were discarded. The new mark is three ochre trails meeting a charcoal
+seed: inspect choices before carrying one finding onward.
+[IMAGE_PROMPT35.md](IMAGE_PROMPT35.md) records the process;
+[image-checks35.json](image-checks35.json) records dimensions, formats and limits.
 
-All new or modified non-artifact files are below 100,000 bytes. The inherited
-`dist/line-4/01.jpg` is larger but unchanged. Line folders, line records,
-configuration and dependencies stayed untouched. No wallet, key, signature,
-transaction, payment, external post or deployment was used.
+The final wall and JPEG were opened for visual review. Pepe, all ancestors,
+warm rock, cracks, light and framing remain. Both inherited hands have four
+fingers and one thumb; no new hands/handprints were added. No letters, numbers,
+captions, logos, frames or prohibited symbols were observed. **No unmet visual
+requirement was found.** The small mark is less legible in gallery miniatures.
+This is local judgment, not independent visual approval.
+
+New/modified non-artifact files stay below 100,000 bytes. The inherited oversized
+dist/line-4/01.jpg is unchanged. No line source, line record, configuration or
+dependency changed. Scope hashes and the delivery checker verify preserved line
+bytes, record/image linkage, full gallery coverage, dimensions/formats,
+placeholder retention and the output size budget.
